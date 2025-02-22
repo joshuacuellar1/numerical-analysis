@@ -26,7 +26,7 @@ ENV PATH="${PATH}:${VCPKG_ROOT}"
 ARG USERNAME=debian
 
 # Install vcpkg itself: https://github.com/microsoft/vcpkg/blob/master/README.md#quick-start-unix
-COPY base-scripts/install-vcpkg.sh /tmp/
+COPY scripts/install-vcpkg.sh /tmp/
 RUN chmod +x /tmp/install-vcpkg.sh \
     && ./tmp/install-vcpkg.sh ${USERNAME} \
     && rm -f /tmp/install-vcpkg.sh
