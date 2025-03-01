@@ -1,5 +1,5 @@
 {
-    "name": "Numerical Analysis C++",
+    "name": "numerical-analysis-c++",
     "build": {
         "dockerfile": "Dockerfile",
         "context": "."
