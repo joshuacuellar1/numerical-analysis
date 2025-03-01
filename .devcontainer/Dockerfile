@@ -41,6 +41,6 @@ RUN groupadd -g 1000 devcontainer && \
     chown -R $USERNAME:devcontainer /home/$USERNAME
 
 USER $USERNAME:devcontainer
-ADD --chown=$USERNAME:devcontainer https://github.com/microsoft/vcpkg.git VCPKG_ROOT=/usr/local/vcpkg
+ADD --chown=$USERNAME:devcontainer https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
 ADD --chmod=770 --chown=$USERNAME:devcontainer https://github.com/microsoft/vcpkg-tool/releases/download/2025-02-11/vcpkg-glibc /usr/local/vcpkg/vcpkg
 ENV PATH="${PATH}:/usr/local/vcpkg"
