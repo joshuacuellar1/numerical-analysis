@@ -5,7 +5,6 @@ RUN mkdir -p /cmake ; \
     tar -xzf /cmake.tar.gz --directory /cmake --strip-components=1
 
 FROM debian:bookworm-slim
-ARG USERNAME="debian"
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -37,10 +36,10 @@ RUN ln -s /usr/share/cmake/bin/cmake /usr/bin/cmake ; \
     rm /usr/bin/ld && ln -s /usr/lib/llvm-18/bin/ld.lld /usr/bin/ld
 
 RUN groupadd -g 1000 devcontainer && \
-    useradd -m -u 1000 -g devcontainer $USERNAME && \
-    chown -R $USERNAME:devcontainer /home/$USERNAME
+    useradd -m -u 1000 -g devcontainer debian && \
+    chown -R debian:devcontainer /home/debian
 
-USER $USERNAME:devcontainer
-ADD --chown=$USERNAME:devcontainer https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
-ADD --chmod=770 --chown=$USERNAME:devcontainer https://github.com/microsoft/vcpkg-tool/releases/download/2025-02-11/vcpkg-glibc /usr/local/vcpkg/vcpkg
+USER debian:devcontainer
+ADD --chown=debian:devcontainer https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
+ADD --chmod=770 --chown=debian:devcontainer https://github.com/microsoft/vcpkg-tool/releases/download/2025-02-11/vcpkg-glibc /usr/local/vcpkg/vcpkg
 ENV PATH="${PATH}:/usr/local/vcpkg"
