@@ -26,6 +26,7 @@ RUN echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" >> 
     libc++-18-dev \
     libc++abi-18-dev \
     git \
+    openssh-client \
     ninja-build \
     cppcheck \
     valgrind; \
