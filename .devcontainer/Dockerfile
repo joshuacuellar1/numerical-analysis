@@ -4,6 +4,16 @@ ADD --checksum=sha256:2984e70515ff60c5e4a41922b5d715a8168a696a89721e3b114e36f453
 RUN mkdir -p /cmake ; \
     tar -xzf /cmake.tar.gz --directory /cmake --strip-components=1
 
+FROM debian:bookworm-slim AS ninja
+RUN apt-get update; \
+    apt-get install -y --no-install-recommends \
+    unzip; \
+    apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*;
+ADD https://github.com/ninja-build/ninja/releases/download/v1.12.1/ninja-linux.zip /ninja.zip
+RUN mkdir -p /ninja ; \
+    unzip -j /ninja.zip -d /ninja
+
+
 FROM debian:bookworm-slim
 
 RUN apt-get update; \
@@ -26,7 +36,6 @@ RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" >>
     libc++abi-18-dev \
     git \
     openssh-client \
-    ninja-build \
     cppcheck \
     valgrind; \
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*;
@@ -39,8 +48,12 @@ RUN groupadd -g 1000 devcontainer && \
     useradd -m -u 1000 -g devcontainer debian && \
     chown -R debian:devcontainer /home/debian
 
+
 USER debian:devcontainer
+
 ADD --chown=debian:devcontainer https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
 ADD --chmod=700 --chown=debian:devcontainer https://github.com/microsoft/vcpkg-tool/releases/download/2025-02-11/vcpkg-glibc /usr/local/vcpkg/vcpkg
 ENV PATH="${PATH}:/usr/local/vcpkg"
 ENV VCPKG_ROOT=/usr/local/vcpkg
+
+COPY --from=ninja --chmod=700 --chown=debian:devcontainer /ninja/ninja /usr/bin/ninja
