@@ -41,6 +41,6 @@ RUN groupadd -g 1000 devcontainer && \
 
 USER debian:devcontainer
 ADD --chown=debian:devcontainer https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
-ADD --chmod=770 --chown=debian:devcontainer https://github.com/microsoft/vcpkg-tool/releases/download/2025-02-11/vcpkg-glibc /usr/local/vcpkg/vcpkg
+ADD --chmod=700 --chown=debian:devcontainer https://github.com/microsoft/vcpkg-tool/releases/download/2025-02-11/vcpkg-glibc /usr/local/vcpkg/vcpkg
 ENV PATH="${PATH}:/usr/local/vcpkg"
 ENV VCPKG_ROOT=/usr/local/vcpkg
