@@ -28,7 +28,6 @@ RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" >>
     clang-18 \
     lld-18 \
     lldb-18 \
-    clangd-18 \
     clang-tidy-18 \
     clang-format-18 \
     clang-tools-18 \
