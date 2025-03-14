@@ -36,7 +36,8 @@ RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" >>
     git \
     openssh-client \
     cppcheck \
-    valgrind; \
+    valgrind \
+    linux-perf ; \
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*;
 COPY --from=cmake /cmake /usr/share/cmake
 RUN ln -s /usr/share/cmake/bin/cmake /usr/bin/cmake ; \
