@@ -1,5 +1,5 @@
 FROM debian:bookworm-slim AS cmake
-ADD --checksum=sha256:2984e70515ff60c5e4a41922b5d715a8168a696a89721e3b114e36f453244f72 \
+ADD --checksum=sha256:5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf \
     https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz /cmake.tar.gz
 RUN mkdir -p /cmake ; \
     tar -xzf /cmake.tar.gz --directory /cmake --strip-components=1
