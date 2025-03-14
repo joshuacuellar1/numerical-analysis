@@ -41,7 +41,7 @@ RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-20 main" >>
 COPY --from=cmake /cmake /usr/share/cmake
 RUN ln -s /usr/share/cmake/bin/cmake /usr/bin/cmake ; \
     ln -s /usr/share/cmake/bin/cpack /usr/bin/cpack ; \
-    rm /usr/bin/ld && ln -s /usr/lib/llvm-18/bin/ld.lld /usr/bin/ld
+    rm /usr/bin/ld && ln -s /usr/lib/llvm-20/bin/ld.lld /usr/bin/ld
 
 RUN groupadd -g 1000 devcontainer && \
     useradd -m -u 1000 -g devcontainer debian && \
