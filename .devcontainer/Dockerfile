@@ -21,18 +21,17 @@ RUN apt-get update; \
     ca-certificates
 
 ADD --chown=_apt:nogroup https://apt.llvm.org/llvm-snapshot.gpg.key /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" >> /etc/apt/sources.list ; \
-    echo "deb-src https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" >> /etc/apt/sources.list ; \
+RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-20 main" >> /etc/apt/sources.list ; \
+    echo "deb-src https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-20 main" >> /etc/apt/sources.list ; \
     apt-get update ; \
     apt-get install -y --no-install-recommends \
-    clang-18 \
-    lld-18 \
-    lldb-18 \
-    clang-tidy-18 \
-    clang-format-18 \
-    clang-tools-18 \
-    libc++-18-dev \
-    libc++abi-18-dev \
+    clang-20 \
+    llvm-20 \
+    lld-20 \
+    lldb-20 \
+    clang-tidy-20 \
+    clang-format-20 \
+    clang-tools-20 \
     git \
     openssh-client \
     cppcheck \
