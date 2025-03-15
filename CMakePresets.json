@@ -1,0 +1,61 @@
+{
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 31,
+    "patch": 0
+  },
+  "$comment": "CMakePresets.json file",
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default",
+      "hidden": true,
+      "description": "Default build using Ninja generator",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/toolchains/linux-clang.cmake"
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "description": "Enable debug options",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      },
+      "inherits": ["default"]
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "description": "Enable release options",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      },
+      "inherits": ["default"]
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "displayName": "Default",
+      "hidden": false,
+      "configurePreset": "default"
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "configurePreset": "debug",
+      "inherits": ["default"]
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "configurePreset": "release",
+      "inherits": ["default"]
+    }
+  ]
+}
