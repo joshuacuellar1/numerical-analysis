@@ -12,50 +12,79 @@
       "displayName": "Default",
       "hidden": true,
       "description": "Default build using Ninja generator",
-      "generator": "Ninja",
+      "generator": "Ninja Multi-Config",
       "binaryDir": "${sourceDir}/build/${presetName}",
-      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-      "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/toolchains/linux-clang.cmake"
-      }
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
     },
     {
-      "name": "debug",
-      "displayName": "Debug",
-      "description": "Enable debug options",
+      "name": "clang",
+      "displayName": "Clang",
+      "description": "Use Clang compiler",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
       },
       "inherits": ["default"]
     },
     {
-      "name": "release",
-      "displayName": "Release",
-      "description": "Enable release options",
+      "name": "gcc",
+      "displayName": "GCC",
+      "description": "Use GCC compiler",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
       },
       "inherits": ["default"]
     }
   ],
   "buildPresets": [
     {
-      "name": "default",
-      "displayName": "Default",
-      "hidden": false,
-      "configurePreset": "default"
+      "name": "clang-debug",
+      "displayName": "Clang Debug",
+      "configurePreset": "clang",
+      "configuration": "Debug"
     },
     {
-      "name": "debug",
-      "displayName": "Debug",
-      "configurePreset": "debug",
-      "inherits": ["default"]
+      "name": "clang-release",
+      "displayName": "Clang Release",
+      "configurePreset": "clang",
+      "configuration": "Release"
     },
     {
-      "name": "release",
-      "displayName": "Release",
-      "configurePreset": "release",
-      "inherits": ["default"]
+      "name": "clang-relwithdebinfo",
+      "displayName": "Clang RelWithDebInfo",
+      "configurePreset": "clang",
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "clang-minsizerel",
+      "displayName": "Clang MinSizeRel",
+      "configurePreset": "clang",
+      "configuration": "MinSizeRel"
+    },
+    {
+      "name": "gcc-debug",
+      "displayName": "GCC Debug",
+      "configurePreset": "gcc",
+      "configuration": "Debug"
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC Release",
+      "configurePreset": "gcc",
+      "configuration": "Release"
+    },
+    {
+      "name": "gcc-relwithdebinfo",
+      "displayName": "GCC RelWithDebInfo",
+      "configurePreset": "gcc",
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "gcc-minsizerel",
+      "displayName": "GCC MinSizeRel",
+      "configurePreset": "gcc",
+      "configuration": "MinSizeRel"
     }
   ]
 }

@@ -4,4 +4,4 @@ project(numerical_analysis)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(numerical_analysis
-        main.cpp)
+        source/main.cpp)
