@@ -21,7 +21,6 @@
       "displayName": "Clang",
       "description": "Use Clang compiler",
       "cacheVariables": {
-        "CMAKE_C_COMPILER": "clang",
         "CMAKE_CXX_COMPILER": "clang++"
       },
       "inherits": ["default"]
@@ -31,7 +30,6 @@
       "displayName": "GCC",
       "description": "Use GCC compiler",
       "cacheVariables": {
-        "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++"
       },
       "inherits": ["default"]
