@@ -32,6 +32,7 @@ RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-20 main" >>
     clang-tidy-20 \
     clang-format-20 \
     clang-tools-20 \
+    libclang-rt-20-dev \
     git \
     openssh-client \
     cppcheck \
