@@ -21,7 +21,8 @@ RUN apt-get update; \
     ca-certificates \
     zip unzip \
     curl \
-    git
+    git \
+    pkgconf
 
 ADD --chown=_apt:nogroup https://apt.llvm.org/llvm-snapshot.gpg.key /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-20 main" >> /etc/apt/sources.list ; \
