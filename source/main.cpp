@@ -2,9 +2,9 @@
 // Created by root on 5/3/25.
 //
 
-#include <iostream>
+#include <fmt/base.h>
 
 int main() {
-    std::cout << "Hello, world!" << std::endl;
+    fmt::print("Hello World!\n");
     return 0;
 }
