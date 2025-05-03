@@ -18,7 +18,10 @@ FROM debian:bookworm-slim
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
-    ca-certificates
+    ca-certificates \
+    zip unzip \
+    curl \
+    git
 
 ADD --chown=_apt:nogroup https://apt.llvm.org/llvm-snapshot.gpg.key /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-20 main" >> /etc/apt/sources.list ; \
@@ -33,7 +36,6 @@ RUN echo "deb https://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-20 main" >>
     clang-format-20 \
     clang-tools-20 \
     libclang-rt-20-dev \
-    git \
     openssh-client \
     cppcheck \
     valgrind \
