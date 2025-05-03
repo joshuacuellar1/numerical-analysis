@@ -47,9 +47,16 @@ RUN ln -s /usr/share/cmake/bin/cmake /usr/bin/cmake ; \
     ln -s /usr/share/cmake/bin/cpack /usr/bin/cpack ; \
     rm /usr/bin/ld && ln -s /usr/lib/llvm-20/bin/ld.lld /usr/bin/ld
 
-ADD --keep-git-dir=true https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
-ADD --chmod=500 https://github.com/microsoft/vcpkg-tool/releases/download/2025-04-16/vcpkg-glibc /usr/local/vcpkg/vcpkg
+RUN groupadd -g 1000 devcontainer && \
+    useradd -m -u 1000 -g devcontainer debian && \
+    chown -R debian:devcontainer /home/debian
+
+
+USER debian:devcontainer
+
+ADD --keep-git-dir=true --chown=debian:devcontainer https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
+ADD --chmod=500 --chown=debian:devcontainer https://github.com/microsoft/vcpkg-tool/releases/download/2025-04-16/vcpkg-glibc /usr/local/vcpkg/vcpkg
 ENV PATH="$PATH:/usr/local/vcpkg:/usr/lib/llvm-20/bin"
 ENV VCPKG_ROOT=/usr/local/vcpkg
 
-COPY --from=ninja --chmod=500 /ninja/ninja /usr/bin/ninja
+COPY --from=ninja --chmod=500 --chown=debian:devcontainer /ninja/ninja /usr/bin/ninja

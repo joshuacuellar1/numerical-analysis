@@ -1,7 +1,7 @@
 {
     "name": "numerical-analysis-c++",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": "."
-    }
+    "dockerComposeFile": "docker-compose.yaml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
+    "containerUser": "debian"
 }
