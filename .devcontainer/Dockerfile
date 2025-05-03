@@ -46,7 +46,7 @@ RUN ln -s /usr/share/cmake/bin/cmake /usr/bin/cmake ; \
     ln -s /usr/share/cmake/bin/cpack /usr/bin/cpack ; \
     rm /usr/bin/ld && ln -s /usr/lib/llvm-20/bin/ld.lld /usr/bin/ld
 
-ADD https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
+ADD --keep-git-dir=true https://github.com/microsoft/vcpkg.git /usr/local/vcpkg
 ADD --chmod=500 https://github.com/microsoft/vcpkg-tool/releases/download/2025-04-16/vcpkg-glibc /usr/local/vcpkg/vcpkg
 ENV PATH="$PATH:/usr/local/vcpkg:/usr/lib/llvm-20/bin"
 ENV VCPKG_ROOT=/usr/local/vcpkg
