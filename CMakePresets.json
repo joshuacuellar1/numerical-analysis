@@ -5,7 +5,6 @@
     "minor": 31,
     "patch": 0
   },
-  "$comment": "CMakePresets.json file",
   "configurePresets": [
     {
       "name": "default",
