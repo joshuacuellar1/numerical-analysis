@@ -2,6 +2,7 @@
   "name": "numerical-analysis",
   "version": "1.0.0",
   "dependencies": [
-    "fmt"
+    "fmt",
+    "cli11"
   ]
 }
