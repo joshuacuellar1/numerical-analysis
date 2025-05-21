@@ -20,7 +20,7 @@
       "displayName": "Clang",
       "description": "Use Clang compiler",
       "cacheVariables": {
-        "CMAKE_CXX_COMPILER": "clang++"
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/clang-toolchain.cmake"
       },
       "inherits": ["default"]
     },
